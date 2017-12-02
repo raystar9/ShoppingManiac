@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements RECOServiceConnec
         _rootLayout = findViewById(R.id.cons_main_frame);
 
         _tmpPrev = new ArrayList<>();
+        toDebug();
     }
 
     private void popDrawerView() {
@@ -217,10 +218,9 @@ public class MainActivity extends AppCompatActivity implements RECOServiceConnec
         ArrayList<Integer> tmp = getRangedConerList(collection);
         if (!tmp.equals(_tmpPrev)) {
             updateAdapter(tmp);
-            Toast.makeText(this, "비콘 입출입이 감지되었습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "비콘 출입이 감지되었습니다.", Toast.LENGTH_SHORT).show();
             if (!tmp.contains(_showingBeacon)) {
                 viewDiscountInfo();
-                
             }
 
         }
@@ -417,6 +417,24 @@ public class MainActivity extends AppCompatActivity implements RECOServiceConnec
     }
 
 //endregion
+
+    //region toDebug
+    private void toDebug(){
+        Button meatButton = (Button) findViewById(R.id.debug_meat);
+        meatButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<Integer> list = new ArrayList<>();
+                list.add(0);
+                list.add(1);
+
+                updateAdapter(list);
+                viewDiscountInfo();
+
+            }
+        });
+    }
+    //endregion
 
     //region RecyclerViewAdapters
     class DiscountRecyclerAdapter extends RecyclerView.Adapter<DiscountRecyclerAdapter.ViewHolder> {

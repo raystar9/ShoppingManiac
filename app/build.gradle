@@ -12,6 +12,7 @@ android {
         versionName "1.0"
         vectorDrawables.useSupportLibrary = true
     }
+    buildToolsVersion '26.0.2'
 }
 allprojects {
     repositories {
